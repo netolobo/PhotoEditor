@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct ImagePickerPanel: View {
+    @Binding var showingImagePicker: Bool
+    @Binding var sourceType: UIImagePickerController.SourceType
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack (spacing: 40) {
+            ImagePickerButton(iconName: Constants.photoIcon) {
+                showingImagePicker.toggle()
+                sourceType = .photoLibrary
+            }
+            
+            ImagePickerButton(iconName: Constants.cameraIcon) {
+                showingImagePicker.toggle()
+                sourceType = .camera
+            }
+        }
     }
 }
 
-#Preview {
-    ImagePickerPanel()
+#Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
+    ImagePickerPanel(showingImagePicker: .constant(false), sourceType: .constant(.camera))
+}
+
+#Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
+    ImagePickerPanel(showingImagePicker: .constant(false), sourceType: .constant(.camera))
+        .preferredColorScheme(.dark)
 }

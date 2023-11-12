@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5A0CFBD92AFC293C005C2138 /* PhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A0CFBD92AFC293C005C2138 /* Prismify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Prismify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A0CFBDC2AFC293C005C2138 /* PhotoEditorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorApp.swift; sourceTree = "<group>"; };
 		5A0CFBDE2AFC293C005C2138 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5A0CFBE02AFC2942005C2138 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,7 +68,7 @@
 		5A0CFBDA2AFC293C005C2138 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A0CFBD92AFC293C005C2138 /* PhotoEditor.app */,
+				5A0CFBD92AFC293C005C2138 /* Prismify.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,9 +131,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A0CFBD82AFC293C005C2138 /* PhotoEditor */ = {
+		5A0CFBD82AFC293C005C2138 /* Prismify */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A0CFBE72AFC2942005C2138 /* Build configuration list for PBXNativeTarget "PhotoEditor" */;
+			buildConfigurationList = 5A0CFBE72AFC2942005C2138 /* Build configuration list for PBXNativeTarget "Prismify" */;
 			buildPhases = (
 				5A0CFBD52AFC293C005C2138 /* Sources */,
 				5A0CFBD62AFC293C005C2138 /* Frameworks */,
@@ -143,9 +143,9 @@
 			);
 			dependencies = (
 			);
-			name = PhotoEditor;
+			name = Prismify;
 			productName = PhotoEditor;
-			productReference = 5A0CFBD92AFC293C005C2138 /* PhotoEditor.app */;
+			productReference = 5A0CFBD92AFC293C005C2138 /* Prismify.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -163,7 +163,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5A0CFBD42AFC293C005C2138 /* Build configuration list for PBXProject "PhotoEditor" */;
+			buildConfigurationList = 5A0CFBD42AFC293C005C2138 /* Build configuration list for PBXProject "Prismify" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -176,7 +176,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A0CFBD82AFC293C005C2138 /* PhotoEditor */,
+				5A0CFBD82AFC293C005C2138 /* Prismify */,
 			);
 		};
 /* End PBXProject section */
@@ -403,7 +403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5A0CFBD42AFC293C005C2138 /* Build configuration list for PBXProject "PhotoEditor" */ = {
+		5A0CFBD42AFC293C005C2138 /* Build configuration list for PBXProject "Prismify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A0CFBE52AFC2942005C2138 /* Debug */,
@@ -412,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A0CFBE72AFC2942005C2138 /* Build configuration list for PBXNativeTarget "PhotoEditor" */ = {
+		5A0CFBE72AFC2942005C2138 /* Build configuration list for PBXNativeTarget "Prismify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A0CFBE82AFC2942005C2138 /* Debug */,

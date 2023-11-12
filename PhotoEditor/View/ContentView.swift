@@ -26,70 +26,20 @@ struct ContentView: View {
                         .cornerRadius(25)
                         .padding(.horizontal, 10)
                     
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            ForEach(FiltersList.allCases, id: \.selectedFilter) { filter in
-                                Button {
-                                    viewModel.selectedFilter = filter.selectedFilter
-                                    viewModel.applyFilter()
-                                } label: {
-                                    VStack {
-                                        Text(filter.rawValue)
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 15, weight: .bold, design: .rounded))
-                                            .cornerRadius(25)
-                                            .padding([.horizontal, .top], 5)
-                                        
-                                        
-                                        Image(uiImage: filter.filteredImage(image: viewModel.originalImage))
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 140, height: 100)
-                                            .background(.ultraThinMaterial)
-                                            .clipped()
-                                    }
-                                    .background(.ultraThinMaterial)
-                                    .clipShape(RoundedRectangle(cornerRadius: 25))
-                                    
-                                }
-                            }
-                            
-                        }
-                        .padding(.horizontal, 10)
-                    }
+                    FilterPicker(viewModel: viewModel)
                     
-                    HStack (spacing: 40) {
-                        Button {
-                            sourceType = .photoLibrary
-                            showingImagePicker.toggle()
-                        } label: {
-                            Image(systemName: "photo")
-                                .frame(width: 80, height: 80)
-                                .font(.largeTitle)
-                                .foregroundColor(.primary)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                        }
-                        
-                        Button {
-                            sourceType = .camera
-                            showingImagePicker.toggle()
-                        } label: {
-                            Image(systemName: "camera")
-                                .frame(width: 80, height: 80)
-                                .font(.largeTitle)
-                                .foregroundColor(.primary)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                        }
-                    }
+                    ImagePickerPanel(
+                        showingImagePicker: $showingImagePicker,
+                        sourceType: $sourceType
+                    )
+                    
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
-                        Text("Prismify")
-                            .font(.custom("Agbalumo", size: 30))
+                        Text(Constants.appName)
+                            .font(.custom(Constants.fontName, size: 30))
                             .fontWeight(.black)
                             .foregroundColor(.white)
                     }
@@ -98,7 +48,7 @@ struct ContentView: View {
                     Button {
                         viewModel.saveFilteredImage()
                     } label: {
-                        Image(systemName: "photo.badge.arrow.down")
+                        Image(systemName: Constants.saveIcon)
                             .font(.headline)
                             .foregroundColor(.white)
                     }
@@ -115,6 +65,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+#Preview(Constants.lightMode) {
     ContentView()
+}
+
+#Preview(Constants.darkMode) {
+    ContentView()
+        .preferredColorScheme(.dark)
 }

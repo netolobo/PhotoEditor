@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct FilterPicker: View {
+    @State var viewModel: PhotoEditorViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack {
+                ForEach(viewModel.filterList, id: \.rawValue) { filter in
+                    FilterPickerItem(
+                        image: viewModel.originalImage,
+                        filter: filter
+                    ) {
+                        viewModel.applyFilter(selectedFilter: filter.selectedFilter)
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, 10)
     }
 }
 
-#Preview {
-    FilterPicker()
+
+#Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
+    FilterPicker(viewModel: PhotoEditorViewModel())
+}
+
+#Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
+    FilterPicker(viewModel: PhotoEditorViewModel())
+        .preferredColorScheme(.dark)
 }

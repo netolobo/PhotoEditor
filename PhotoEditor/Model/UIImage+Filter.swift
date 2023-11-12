@@ -9,22 +9,19 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func filter(inputImage: UIImage) -> UIImage? {
-//        guard let inputImage = inputImage else { return nil }
+    func filter(_ inputImage: UIImage, _ selectedFilter: CIFilter?) -> UIImage? {
+        
+        
         let beginImage = CIImage(image: inputImage)
-        
         let context = CIContext()
-//        let currentFilter = CIFilter.sepiaTone()
-//        let currentFilter = CIFilter.pixellate()
-//        let currentFilter = CIFilter.crystallize()
-//        let currentFilter = CIFilter.twirlDistortion()
-        let currentFilter = CIFilter.crystallize()
         
-        currentFilter.inputImage = beginImage
+        guard let currentFilter = selectedFilter else { return  nil }
+        
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
         let amount = 1.0
         let inputKeys = currentFilter.inputKeys
-        
+
         if inputKeys.contains(kCIInputIntensityKey) {
             currentFilter.setValue(amount, forKey: kCIInputIntensityKey)
         }
