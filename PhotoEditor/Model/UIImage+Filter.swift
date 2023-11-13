@@ -12,7 +12,7 @@ extension UIImage {
     
     func setFilter(_ inputImage: UIImage, _ filter: CIFilter?)  -> UIImage {
 
-        let beginImage = CIImage(image: inputImage)
+        let beginImage = CIImage(image: inputImage.fixOrientation())
         let context = CIContext()
         
         guard let currentFilter = filter else { return  inputImage }

@@ -27,12 +27,12 @@ struct FilterPickerItem: View {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 140, height: 100)
+                        .frame(width: 140, height: 80)
                         .background(.ultraThinMaterial)
                         .clipped()
                 } else {
                     ProgressView()
-                        .frame(width: 140, height: 100)
+                        .frame(width: 140, height: 80)
                 }
                 
             }

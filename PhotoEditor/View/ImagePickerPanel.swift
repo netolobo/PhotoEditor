@@ -28,9 +28,11 @@ struct ImagePickerPanel: View {
 
 #Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
     ImagePickerPanel(showingImagePicker: .constant(false), sourceType: .constant(.camera))
+        .padding()
 }
 
 #Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
     ImagePickerPanel(showingImagePicker: .constant(false), sourceType: .constant(.camera))
         .preferredColorScheme(.dark)
+        .padding()
 }

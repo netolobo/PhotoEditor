@@ -18,7 +18,6 @@ struct FilterPicker: View {
                         filterName: filter.rawValue,
                         filteredImage: filter.filterImage(viewModel.originalImage)
                     ) {
-                        
                         withAnimation(.spring(duration: 1, bounce: 0.5)) {
                             viewModel.aplyingFilter = true
                             
@@ -28,15 +27,13 @@ struct FilterPicker: View {
                                 viewModel.showSaveButton = false
                             }
                         }
-                        
-                      
+            
                         viewModel.applyFilter(selectedFilter: filter.selectedFilter)
-                        
                     }
                 }
             }
+            .frame(height: 120)
         }
-        .padding(.horizontal, 10)
     }
 }
 

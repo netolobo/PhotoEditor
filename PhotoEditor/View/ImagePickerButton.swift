@@ -16,8 +16,8 @@ struct ImagePickerButton: View {
             click()
         } label: {
             Image(systemName: iconName)
-                .frame(width: 80, height: 80)
-                .font(.largeTitle)
+                .frame(width: 60, height: 60)
+                .font(.title)
                 .foregroundColor(.primary)
                 .background(.regularMaterial)
                 .clipShape(Circle())
