@@ -47,7 +47,6 @@ struct ContentView: View {
                     }
                 }
                 .toolbar {
-                    
                         Button {
                             viewModel.saveFilteredImage()
                         } label: {
@@ -56,6 +55,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                         }
                         .opacity(viewModel.showSaveButton ? 1 : 0)
+                        .symbolEffect(.bounce.down, value: viewModel.showSaveButton ? 1 : 0)
                 }
                 .sheet(isPresented: $showingImagePicker) {
                     ImagePicker(sourceType: $sourceType, selectedImage: $viewModel.originalImage)
