@@ -8,17 +8,30 @@
 import SwiftUI
 
 struct FilterPicker: View {
-    @State var viewModel: PhotoEditorViewModel
+    @Binding var viewModel: PhotoEditorViewModel
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
+            LazyHStack {
                 ForEach(viewModel.filterList, id: \.rawValue) { filter in
                     FilterPickerItem(
-                        image: viewModel.originalImage,
-                        filter: filter
+                        filterName: filter.rawValue,
+                        filteredImage: filter.filterImage(viewModel.originalImage)
                     ) {
+                        
+                        withAnimation(.spring(duration: 1, bounce: 0.5)) {
+                            viewModel.aplyingFilter = true
+                            
+                            if filter != FiltersList.Original {
+                                viewModel.showSaveButton = true
+                            } else {
+                                viewModel.showSaveButton = false
+                            }
+                        }
+                        
+                      
                         viewModel.applyFilter(selectedFilter: filter.selectedFilter)
+                        
                     }
                 }
             }
@@ -29,10 +42,12 @@ struct FilterPicker: View {
 
 
 #Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
-    FilterPicker(viewModel: PhotoEditorViewModel())
+    FilterPicker(viewModel: .constant(PhotoEditorViewModel()))
+        .padding()
 }
 
 #Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
-    FilterPicker(viewModel: PhotoEditorViewModel())
+    FilterPicker(viewModel: .constant(PhotoEditorViewModel()))
         .preferredColorScheme(.dark)
+        .padding()
 }

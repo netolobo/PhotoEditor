@@ -20,13 +20,15 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 VStack {
+                    
                     Image(uiImage: viewModel.filteredImage)
                         .resizable()
                         .scaledToFit()
+                        .scaleEffect(viewModel.aplyingFilter ? 1.7 : 1.0)
                         .cornerRadius(25)
                         .padding(.horizontal, 10)
                     
-                    FilterPicker(viewModel: viewModel)
+                    FilterPicker(viewModel: $viewModel)
                     
                     ImagePickerPanel(
                         showingImagePicker: $showingImagePicker,
@@ -45,18 +47,20 @@ struct ContentView: View {
                     }
                 }
                 .toolbar {
-                    Button {
-                        viewModel.saveFilteredImage()
-                    } label: {
-                        Image(systemName: Constants.saveIcon)
-                            .font(.headline)
-                            .foregroundColor(.white)
-                    }
+                    
+                        Button {
+                            viewModel.saveFilteredImage()
+                        } label: {
+                            Image(systemName: Constants.saveIcon)
+                                .font(.headline)
+                                .foregroundColor(.white)
+                        }
+                        .opacity(viewModel.showSaveButton ? 1 : 0)
                 }
-                
                 .sheet(isPresented: $showingImagePicker) {
                     ImagePicker(sourceType: $sourceType, selectedImage: $viewModel.originalImage)
                 }
+                .alert(viewModel.saveImageResultMessage, isPresented: $viewModel.showSaveImageResultAlert) {}
                 .padding(.vertical, 10)
             }
             .background(LinearGradient(colors: [.blue, .indigo, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
@@ -69,7 +73,7 @@ struct ContentView: View {
     ContentView()
 }
 
-#Preview(Constants.darkMode) {
+#Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
     ContentView()
         .preferredColorScheme(.dark)
 }

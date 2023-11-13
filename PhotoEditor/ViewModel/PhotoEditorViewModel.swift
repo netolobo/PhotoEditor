@@ -20,11 +20,23 @@ class PhotoEditorViewModel {
       
     var filterList  = FiltersList.allCases
     
-    func applyFilter(selectedFilter: CIFilter = CIFilter.pixellate()) {
-        filteredImage = originalImage.filter(originalImage, selectedFilter) ?? originalImage
+    var aplyingFilter = false 
+    
+    var showSaveButton = false
+    
+    var showSaveImageResultAlert = false
+    
+    var saveImageResultMessage : String = ""
+    
+    func applyFilter(selectedFilter: CIFilter? = CIFilter.pixellate()) {
+        filteredImage = originalImage.setFilter(originalImage, selectedFilter)
+        aplyingFilter = false
     }
     
     func saveFilteredImage() {
-        filteredImage.save()
+        filteredImage.save { message in
+            self.showSaveImageResultAlert.toggle()
+            self.saveImageResultMessage = message
+        }
     }
 }

@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func filter(_ inputImage: UIImage, _ selectedFilter: CIFilter?) -> UIImage? {
-        
-        
+    
+    func setFilter(_ inputImage: UIImage, _ filter: CIFilter?)  -> UIImage {
+
         let beginImage = CIImage(image: inputImage)
         let context = CIContext()
         
-        guard let currentFilter = selectedFilter else { return  nil }
+        guard let currentFilter = filter else { return  inputImage }
         
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
@@ -34,13 +34,13 @@ extension UIImage {
             currentFilter.setValue(amount * 10, forKey: kCIInputScaleKey)
         }
         
-        guard let outputImage = currentFilter.outputImage else { return nil  }
+        guard let outputImage = currentFilter.outputImage else { return inputImage  }
         
         if let cgImg = context.createCGImage(outputImage, from: outputImage.extent) {
             let uiImage = UIImage(cgImage: cgImg)
             return uiImage
         }
         
-        return nil
+        return inputImage
     }
 }

@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct FilterPickerItem: View {
-    var image: UIImage
-    var filter: FiltersList
-    
+    var filterName: String
+    var filteredImage: UIImage?
     var click: () -> Void
     
     var body: some View {
@@ -18,19 +17,24 @@ struct FilterPickerItem: View {
             click()
         } label: {
             VStack {
-                Text(filter.rawValue)
+                Text(filterName)
                     .foregroundColor(.primary)
                     .font(.system(size: 15, weight: .bold, design: .rounded))
                     .cornerRadius(25)
                     .padding([.horizontal, .top], 5)
                 
+                if let image = filteredImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 140, height: 100)
+                        .background(.ultraThinMaterial)
+                        .clipped()
+                } else {
+                    ProgressView()
+                        .frame(width: 140, height: 100)
+                }
                 
-                Image(uiImage: filter.filterImage(image: image))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 140, height: 100)
-                    .background(.ultraThinMaterial)
-                    .clipped()
             }
             .background(.ultraThinMaterial)
             .clipShape(RoundedRectangle(cornerRadius: 25))
@@ -40,8 +44,8 @@ struct FilterPickerItem: View {
 
 #Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
     FilterPickerItem(
-        image: Constants.defaultImage,
-        filter: FiltersList.Brazil,
+        filterName: "Brazil",
+        filteredImage: Constants.defaultImage,
         click: {}
     )
     .padding()
@@ -49,8 +53,8 @@ struct FilterPickerItem: View {
 
 #Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
     FilterPickerItem(
-        image: Constants.defaultImage,
-        filter: FiltersList.Brazil,
+        filterName: "Brazil",
+        filteredImage: Constants.defaultImage,
         click: {}
     )
     .preferredColorScheme(.dark)

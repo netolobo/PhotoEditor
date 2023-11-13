@@ -18,12 +18,12 @@ enum FiltersList : String, CaseIterable {
     case Iran = "Iran"
     case Mexico = "Mexico"
     case Japan = "Japan"
+
     
-    
-    var selectedFilter: CIFilter {
+    var selectedFilter: CIFilter? {
         switch self {
         case .Original:
-            return CIFilter.colorInvert()
+            return nil
         case .Brazil:
             return CIFilter.sharpenLuminance()
         case .Ecuador:
@@ -41,25 +41,25 @@ enum FiltersList : String, CaseIterable {
         }
     }
     
-    func filterImage(image: UIImage) -> UIImage {
+    func filterImage(_ image: UIImage) -> UIImage {
         
         switch self {
         case .Original:
             return image
         case .Brazil:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         case .Ecuador:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         case .Iran:
-            return image.filter(image, selectedFilter) ?? image
+            return image.setFilter(image, selectedFilter)
         case .Mexico:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         case .Japan:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         case .Canada:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         case .DominicRepublic:
-            return image.filter(image, selectedFilter) ?? image
+            return  image.setFilter(image, selectedFilter)
         }
     }
 
