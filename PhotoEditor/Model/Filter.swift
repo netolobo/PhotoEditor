@@ -9,7 +9,7 @@ import Foundation
 import CoreImage
 import UIKit
 
-enum FiltersList : String, CaseIterable {
+enum Filter : String, CaseIterable {
     case Original = "Original"
     case Brazil = "Brazil"
     case Canada = "Canada"
