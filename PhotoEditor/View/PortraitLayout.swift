@@ -36,6 +36,12 @@ struct PortraitLayout: View {
     }
 }
 
-#Preview {
+#Preview(Constants.lightMode) {
     PortraitLayout(viewModel: .constant(PhotoEditorViewModel()), isLandscape: false)
 }
+
+#Preview(Constants.darkMode) {
+    PortraitLayout(viewModel: .constant(PhotoEditorViewModel()), isLandscape: false)
+        .preferredColorScheme(.dark)
+}
+

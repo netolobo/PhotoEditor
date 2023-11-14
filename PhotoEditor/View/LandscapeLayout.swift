@@ -35,6 +35,11 @@ struct LandscapeLayout: View {
     }
 }
 
-#Preview {
+#Preview(Constants.lightMode) {
     LandscapeLayout(viewModel: .constant(PhotoEditorViewModel()), isLandscape: true)
+}
+
+#Preview(Constants.darkMode) {
+    LandscapeLayout(viewModel: .constant(PhotoEditorViewModel()), isLandscape: true)
+        .preferredColorScheme(.dark)
 }
