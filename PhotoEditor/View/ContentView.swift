@@ -11,48 +11,32 @@ import SwiftUI
 
 
 struct ContentView: View {
-    
-    @State private var showingImagePicker = false
     @State private var viewModel = PhotoEditorViewModel()
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    var isLandscape : Bool {
+        verticalSizeClass == .compact
+    }
     
     var body: some View {
         NavigationStack {
             ZStack {
-                VStack (spacing: 0) {
-                    
-                    Spacer()
-                    
-                    Image(uiImage: viewModel.filteredImage)
-                        .resizable()
-                        .scaledToFit()
-                        .scaleEffect(viewModel.aplyingFilter ? 1.7 : 1.0)
-                        .cornerRadius(25)
-                        .padding(.horizontal, 5)
-                    
-                    Spacer()
-                    
-                    FilterPicker(viewModel: $viewModel)
-                        .padding(.horizontal, 5)
-                    
-                    ImagePickerPanel(
-                        showingImagePicker: $showingImagePicker,
-                        sourceType: $sourceType
-                    )
-                    .padding(.top, 20)
+                if isLandscape {
+                    LandscapeLayout(viewModel: $viewModel, isLandscape: isLandscape)
+                } else {
+                    PortraitLayout(viewModel: $viewModel, isLandscape: isLandscape)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .principal) {
+                ToolbarItem(placement: .topBarLeading) {
                     Text(Constants.appName)
-                        .font(.custom(Constants.fontName, size: 30))
+                        .font(.custom(Constants.fontName, size: 34))
                         .fontWeight(.black)
                         .foregroundColor(.white)
                 }
-            }
-            .toolbar {
+                
+                ToolbarItem(placement: .topBarTrailing) {
                     Button {
                         viewModel.saveFilteredImage()
                     } label: {
@@ -62,15 +46,20 @@ struct ContentView: View {
                     }
                     .opacity(viewModel.showSaveButton ? 1 : 0)
                     .symbolEffect(.bounce.down, value: viewModel.showSaveButton ? 1 : 0)
+                }
             }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(sourceType: $sourceType, selectedImage: $viewModel.originalImage)
+            .sheet(isPresented: $viewModel.showingImagePicker) {
+                ImagePicker(sourceType: $viewModel.sourceType, selectedImage: $viewModel.originalImage)
             }
             .alert(viewModel.saveImageResultMessage, isPresented: $viewModel.showSaveImageResultAlert) {}
             .padding(.vertical, 10)
-            .background(LinearGradient(colors: [.blue, .indigo, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+            .background(
+                LinearGradient(
+                    colors: [.blue, .indigo, .purple],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing)
+            )
         }
-        
     }
 }
 
@@ -78,7 +67,7 @@ struct ContentView: View {
     ContentView()
 }
 
-#Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
+#Preview(Constants.darkMode) {
     ContentView()
         .preferredColorScheme(.dark)
 }

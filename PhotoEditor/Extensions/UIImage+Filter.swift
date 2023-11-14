@@ -11,7 +11,7 @@ import UIKit
 extension UIImage {
     
     func setFilter(_ inputImage: UIImage, _ filter: CIFilter?)  -> UIImage {
-
+        
         let beginImage = CIImage(image: inputImage.fixOrientation())
         let context = CIContext()
         
@@ -21,7 +21,7 @@ extension UIImage {
         
         let amount = 1.0
         let inputKeys = currentFilter.inputKeys
-
+        
         if inputKeys.contains(kCIInputIntensityKey) {
             currentFilter.setValue(amount, forKey: kCIInputIntensityKey)
         }

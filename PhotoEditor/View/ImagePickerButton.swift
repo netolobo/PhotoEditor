@@ -10,7 +10,7 @@ import SwiftUI
 struct ImagePickerButton: View {
     let iconName : String
     let click: () -> Void
-
+    
     var body: some View {
         Button {
             click()

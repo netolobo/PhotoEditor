@@ -9,11 +9,12 @@ import SwiftUI
 
 struct LandscapeLayout: View {
     @Binding var viewModel: PhotoEditorViewModel
+    
+    var isLandscape : Bool
+    
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                
+        HStack {
+            VStack {
                 Image(uiImage: viewModel.filteredImage)
                     .resizable()
                     .scaledToFit()
@@ -21,20 +22,19 @@ struct LandscapeLayout: View {
                     .cornerRadius(25)
                     .padding(.horizontal, 5)
                 
-                Spacer()
-                
-                FilterPicker(viewModel: $viewModel, orientation: .vertical)
-                    .padding(.horizontal, 5)
+                ImagePickerPanel(
+                    showingImagePicker: $viewModel.showingImagePicker,
+                    sourceType: $viewModel.sourceType
+                )
+                .padding(.top, 5)
             }
-            ImagePickerPanel(
-                showingImagePicker: $viewModel.showingImagePicker,
-                sourceType: $viewModel.sourceType
-            )
-            .padding(.top, 20)
+            
+            FilterPicker(viewModel: $viewModel, isLandscape: isLandscape)
+                .padding(.horizontal, 5)   
         }
     }
 }
 
 #Preview {
-    LandscapeLayout(viewModel: .constant(PhotoEditorViewModel()))
+    LandscapeLayout(viewModel: .constant(PhotoEditorViewModel()), isLandscape: true)
 }

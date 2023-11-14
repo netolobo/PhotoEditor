@@ -13,14 +13,14 @@ extension UIImage {
         let imageSaver = ImageSaver()
         
         imageSaver.sucessHandler = {
-            withCompletionHandler("Image saved with success!")
+            withCompletionHandler(Constants.imageSavedSuccessMessage)
         }
         
         imageSaver.errorHandler =  {
-            withCompletionHandler("Opps! \($0.localizedDescription)")
+            withCompletionHandler("\(Constants.imageSavedErrorMessage) \($0.localizedDescription)")
         }
         
         imageSaver.writeToPhotoAlbum(image: self)
-
+        
     }
 }

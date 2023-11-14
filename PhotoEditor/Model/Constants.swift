@@ -23,4 +23,9 @@ struct Constants {
     static let lightMode = "Light Mode"
     
     static let defaultImage = UIImage(named: "sampleImage")!
+    
+    static let imageSavedSuccessMessage = "Image saved with success!"
+    static let imageSavedErrorMessage = "Ops! somenthing went wrong!"
+    
+    static let defaultFilterName = "Brazil"
 }

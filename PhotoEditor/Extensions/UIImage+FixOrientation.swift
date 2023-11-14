@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-
+    
     func fixOrientation() -> UIImage {
         
         // No-op if the orientation is already correct

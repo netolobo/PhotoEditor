@@ -19,7 +19,7 @@ struct FilterPickerItem: View {
             VStack {
                 Text(filterName)
                     .foregroundColor(.primary)
-                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
                     .cornerRadius(25)
                     .padding([.horizontal, .top], 5)
                 
@@ -27,12 +27,12 @@ struct FilterPickerItem: View {
                     Image(uiImage: image)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 140, height: 80)
+                        .frame(width: 120, height: 80)
                         .background(.ultraThinMaterial)
                         .clipped()
                 } else {
                     ProgressView()
-                        .frame(width: 140, height: 80)
+                        .frame(width: 120, height: 80)
                 }
                 
             }
@@ -44,7 +44,7 @@ struct FilterPickerItem: View {
 
 #Preview(Constants.lightMode, traits: .sizeThatFitsLayout) {
     FilterPickerItem(
-        filterName: "Brazil",
+        filterName: Constants.defaultFilterName,
         filteredImage: Constants.defaultImage,
         click: {}
     )
@@ -53,7 +53,7 @@ struct FilterPickerItem: View {
 
 #Preview(Constants.darkMode, traits: .sizeThatFitsLayout) {
     FilterPickerItem(
-        filterName: "Brazil",
+        filterName: Constants.defaultFilterName,
         filteredImage: Constants.defaultImage,
         click: {}
     )

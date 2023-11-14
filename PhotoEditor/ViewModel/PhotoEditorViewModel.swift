@@ -18,9 +18,9 @@ class PhotoEditorViewModel {
     }
     var filteredImage: UIImage = Constants.defaultImage
       
-    var filterList  = FiltersList.allCases
+    var filters = Filter.allCases
     
-    var aplyingFilter = false 
+    var applyingFilter = false 
     
     var showSaveButton = false
     
@@ -28,9 +28,13 @@ class PhotoEditorViewModel {
     
     var saveImageResultMessage : String = ""
     
+    var showingImagePicker = false
+    
+    var sourceType: UIImagePickerController.SourceType = .camera
+    
     func applyFilter(selectedFilter: CIFilter? = CIFilter.pixellate()) {
         filteredImage = originalImage.setFilter(originalImage, selectedFilter)
-        aplyingFilter = false
+        applyingFilter = false
     }
     
     func saveFilteredImage() {
