@@ -11,7 +11,7 @@ import UIKit
 struct Constants {
     static let appName = "Prismify"
     
-    static let fontName = "VastShadow"
+    static let fontName = "Pacifico-Regular"
     
     static let photoIcon = "photo"
     static let cameraIcon = "camera"
@@ -22,7 +22,7 @@ struct Constants {
     static let darkMode = "Dark Mode"
     static let lightMode = "Light Mode"
     
-    static let defaultImage = UIImage(named: "sampleImage")!
+    static let defaultImage = UIImage(named: "sampleImage")!.aspectFittedToHeight(500)
     
     static let imageSavedSuccessMessage = "Image saved with success!"
     static let imageSavedErrorMessage = "Ops! somenthing went wrong!"
