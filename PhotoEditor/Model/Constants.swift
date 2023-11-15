@@ -11,7 +11,7 @@ import UIKit
 struct Constants {
     static let appName = "Prismify"
     
-    static let fontName = "Agbalumo"
+    static let fontName = "VastShadow"
     
     static let photoIcon = "photo"
     static let cameraIcon = "camera"
