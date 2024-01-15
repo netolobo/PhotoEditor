@@ -1,5 +1,5 @@
 # PhotoEditor
-College project of a photo filter app built using SwiftUI and MVVM Architecture
+A College project of a photo filter app built using SwiftUI and MVVM Architecture.
 
 https://www.youtube.com/shorts/2DcelGjZsLc
 
