@@ -9,8 +9,14 @@ A college project of a photo filter app built using SwiftUI and MVVM Architectur
 - Animations
 - Async Task
 - Closures
-  
-![Primify](https://github.com/user-attachments/assets/c1b8b033-195c-4abe-aa60-ec4db00359fc)
+
+
+
+https://github.com/user-attachments/assets/28a65252-abaa-4c6c-92ff-93dd1972c0e3
+
+
+![Primify](https://github.com/user-attachments/assets/a0b9abc9-eb88-42d5-b12b-8baa05523f20)
+
 
   
 
